@@ -1,12 +1,14 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import Game from './Game'
+import {loadCards} from '../actions/loadCards'
 
 class GameContainer extends React.Component {
   state = {
     // cardsInOrder: [1,2,3,4],
     hideCards: false,
-    winner: false
+    winner: false,
+    lose: false
   }
 
   componentDidMount() {
@@ -29,15 +31,14 @@ class GameContainer extends React.Component {
     if (this.state.cardsInOrder.length > 0) {
       const firstCard = this.state.cardsInOrder.shift()
       if (firstCard === event && this.state.cardsInOrder.length > 0) {
-        console.log('state', this.state);
+        return null
       } else if (firstCard === event && this.state.cardsInOrder.length === 0) {
         this.setState({
-          winner: true
+          win: true
         })
-        console.log('you won!', this.state)
       } else {
         this.setState({
-          loser: true
+          lose: true
         })
       }
     } else {
@@ -45,14 +46,27 @@ class GameContainer extends React.Component {
     }
   }
 
+  levelUp() {
+    console.log('props are', loadCards, 'props truly are', this.props)
+    loadCards(4)
+  }
+
+  playAgain() {
+    console.log('play again')
+    // this.props.loadCards(this.difficulty)
+  }
+
   render() {
     return (
       <Game
         cards={this.props.cards}
         hideCards={this.state.hideCards}
+        clickedCards={this.state.cardsInOrder}
         handleClick={this.handleClick}
-        loser={this.state.loser}
-        winner={this.state.winner}
+        lose={this.state.lose}
+        win={this.state.win}
+        levelUp={this.levelUp}
+        playAgain={this.playAgain}
       />
     )
   }
@@ -60,10 +74,10 @@ class GameContainer extends React.Component {
 
 const mapStateToProps = state => ({
   cards: state.cards,
-  active: state.active
+  difficulty: state.difficulty
 })
 
 export default connect(
   mapStateToProps
-  // ,   {loadCards}
+  ,   {loadCards}
 )(GameContainer)

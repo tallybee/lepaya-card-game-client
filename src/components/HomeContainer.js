@@ -2,13 +2,14 @@ import React from 'react'
 import { connect } from 'react-redux'
 import Home from './Home'
 import { loadCards } from '../actions/loadCards'
-import {setDifficulty} from '../actions/setDifficulty'
+import { setDifficulty } from '../actions/setDifficulty'
 import { Redirect } from 'react-router-dom'
 
-class GameContainer extends React.Component {
-  onClick = (numberOfCards, dificultyLevel) => {
+class HomeContainer extends React.Component {
+
+  onClick = (numberOfCards) => {
     this.props.loadCards(numberOfCards)
-    this.props.setDifficulty(dificultyLevel)
+    this.props.setDifficulty(numberOfCards)
   }
 
   render() {
@@ -28,5 +29,6 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { loadCards, setDifficulty }
-)(GameContainer)
+  { loadCards, 
+    setDifficulty }
+)(HomeContainer)
