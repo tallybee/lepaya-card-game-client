@@ -4,12 +4,15 @@ import Game from './Game'
 
 class GameContainer extends React.Component {
   state = {
-    cardsInOrder: [1, 2, 3, 4],
-    hideCards: false
+    hideCards: false,
   }
 
   componentDidMount() {
-    this.flipCards()
+    const cardsInOrder = [...this.props.cards].sort()
+    this.flipCards();
+    this.setState({
+      cardsInOrder: cardsInOrder
+    })
   }
 
   flipCards() {
@@ -21,17 +24,20 @@ class GameContainer extends React.Component {
   }
 
   handleClick = event => {
+    this.setState({
+      clickedButtons: [event]
+    })
     if (this.state.cardsInOrder.length > 0) {
       const firstCard = this.state.cardsInOrder.shift()
       if (firstCard === event && this.state.cardsInOrder.length > 0) {
-        console.log('doing well')
+        return null;
       } else if (firstCard === event && this.state.cardsInOrder.length === 0) {
-        alert('you won')
+        alert('you won!')
       } else {
-        alert('you lost')
+        alert('you lost!')
       }
     } else {
-      alert('you lost')
+      alert('i dont know whats going on here, im sorry')
     }
   }
 
