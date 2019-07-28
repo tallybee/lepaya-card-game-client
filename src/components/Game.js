@@ -1,7 +1,7 @@
 import React from 'react'
 
 export default function Game(props) {
-  if (!props.cards) return 'Loading game...'
+  // if (!props.cards) return 'Loading game...'
   
   return (
     <div>
@@ -13,9 +13,16 @@ export default function Game(props) {
       { props.cards && props.cards.map(card => (
         <button className='button' key={card} 
         onClick={() => props.handleClick(card)}
-        >{ props. hideCards ? ' ' : card }</button>
+        >{ props.hideCards ? ' ' : card }</button>
       )) }
     </ul>
+    <div> { 
+             props.winner 
+            ? 'YOU WON'
+            : props.loser
+            ? 'YOU LOST'
+            : null}
+      </div>
   </div>
   )
 }

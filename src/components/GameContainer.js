@@ -4,7 +4,9 @@ import Game from './Game'
 
 class GameContainer extends React.Component {
   state = {
+    // cardsInOrder: [1,2,3,4],
     hideCards: false,
+    winner: false
   }
 
   componentDidMount() {
@@ -24,20 +26,22 @@ class GameContainer extends React.Component {
   }
 
   handleClick = event => {
-    this.setState({
-      clickedButtons: [event]
-    })
     if (this.state.cardsInOrder.length > 0) {
       const firstCard = this.state.cardsInOrder.shift()
       if (firstCard === event && this.state.cardsInOrder.length > 0) {
-        return null;
+        console.log('state', this.state);
       } else if (firstCard === event && this.state.cardsInOrder.length === 0) {
-        alert('you won!')
+        this.setState({
+          winner: true
+        })
+        console.log('you won!', this.state)
       } else {
-        alert('you lost!')
+        this.setState({
+          loser: true
+        })
       }
     } else {
-      alert('i dont know whats going on here, im sorry')
+      alert('this shouldnt happen, i dont know whats going on here, im sorry')
     }
   }
 
@@ -47,6 +51,8 @@ class GameContainer extends React.Component {
         cards={this.props.cards}
         hideCards={this.state.hideCards}
         handleClick={this.handleClick}
+        loser={this.state.loser}
+        winner={this.state.winner}
       />
     )
   }
