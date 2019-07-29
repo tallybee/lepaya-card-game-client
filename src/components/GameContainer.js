@@ -4,7 +4,6 @@ import Game from './Game'
 import { loadCards } from '../actions/loadCards'
 
 const initialState = {
-  // cardsInOrder: [1,2,3,4],
   hideCards: false,
   win: false,
   lose: false,
@@ -14,10 +13,7 @@ const initialState = {
 
 class GameContainer extends React.Component {
   state = {
-    hideCards: false,
-    win: false,
-    lose: false,
-    clickedCards: []
+    initialState
   }
 
   componentDidMount() {
@@ -30,13 +26,13 @@ class GameContainer extends React.Component {
       this.setState({
         hideCards: true,
         cardsInOrder: cardsInOrder,
-        isEnabled: true
-      })
+        isEnabled: true,
+        clickedCards:[]
+      }); console.log('im donw')
     }, 3000)
   }
 
   handleClick = event => {
-    console.log(this.state.cardsInOrder)
     this.setState({
       clickedCards: [...this.state.clickedCards, event]
      });
@@ -45,18 +41,22 @@ class GameContainer extends React.Component {
       if (firstCard === event && this.state.cardsInOrder.length > 0) {
         return null
       } else if (firstCard === event && this.state.cardsInOrder.length === 0) {
+        console.log('winning trouble', event, this.state)
         this.setState({
           hideCards: false,
-          win: true
+          win: true,
+          lose: false,
+          isEnabled: false
         })
       } else {
+        console.log('losing trouble', event, this.state, this.cards)
         this.setState({
           hideCards: false,
-          lose: true
+          win: false,
+          lose: true,
+          isEnabled: false
         })
       }
-    } else {
-      alert('this shouldnt happen, i dont know whats going on here, im sorry')
     }
   }
 
@@ -66,7 +66,7 @@ class GameContainer extends React.Component {
 
   playAgain = () => {
     this.setState({
-      state: initialState
+      initialState
     })
     this.props.loadCards(this.props.difficulty)
     this.componentDidMount()

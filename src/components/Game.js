@@ -22,9 +22,9 @@ export default function Game(props) {
     </ul> 
     <div> {
              props.win && !props.hideCards
-            ? <div><button onClick={() => props.levelUp()}>You won. Level up?</button> <button onClick={() => props.playAgain()}>Or play again?</button></div>
+            ? <div>You won! <button onClick={() => props.levelUp()}>Level up?</button> <button onClick={() => props.playAgain()}>Or play again?</button></div>
             : props.lose && !props.hideCards
-            ? <button onClick={() => props.playAgain()}>You lost. Play again?</button>
+            ? <div>You lost! <button onClick={() => props.playAgain()}>Play again?</button></div>
             : null}
       </div>
   </div>
