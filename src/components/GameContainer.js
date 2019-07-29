@@ -1,14 +1,15 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import Game from './Game'
-import {loadCards} from '../actions/loadCards'
+import { loadCards } from '../actions/loadCards'
 
 class GameContainer extends React.Component {
   state = {
     // cardsInOrder: [1,2,3,4],
     hideCards: false,
-    winner: false,
-    lose: false
+    win: false,
+    lose: false,
+    clickedCards: [12]
   }
 
   componentDidMount() {
@@ -28,16 +29,22 @@ class GameContainer extends React.Component {
   }
 
   handleClick = event => {
+    this.setState({
+      clickedCards: [...this.state.clickedCards, event]
+     });
+    console.log('clicked cards', this.state.clickedCards)
     if (this.state.cardsInOrder.length > 0) {
       const firstCard = this.state.cardsInOrder.shift()
       if (firstCard === event && this.state.cardsInOrder.length > 0) {
         return null
       } else if (firstCard === event && this.state.cardsInOrder.length === 0) {
         this.setState({
+          hideCards: false,
           win: true
         })
       } else {
         this.setState({
+          hideCards: false,
           lose: true
         })
       }
@@ -46,14 +53,14 @@ class GameContainer extends React.Component {
     }
   }
 
-  levelUp() {
+  levelUp = () => {
     console.log('props are', loadCards, 'props truly are', this.props)
     loadCards(4)
   }
 
-  playAgain() {
-    console.log('play again')
-    // this.props.loadCards(this.difficulty)
+  playAgain = () => {
+    console.log('props are', this.props, 'props truly are', this.props)
+    this.props.loadCards(4)
   }
 
   render() {
@@ -61,7 +68,7 @@ class GameContainer extends React.Component {
       <Game
         cards={this.props.cards}
         hideCards={this.state.hideCards}
-        clickedCards={this.state.cardsInOrder}
+        clickedCards={this.state.clickedCards}
         handleClick={this.handleClick}
         lose={this.state.lose}
         win={this.state.win}

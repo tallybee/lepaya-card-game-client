@@ -18,7 +18,7 @@ class HomeContainer extends React.Component {
       return <Redirect to="/game" />
     } else {
       return <Home onClick={this.onClick} />
-    }
+    } 
   }
 }
 
