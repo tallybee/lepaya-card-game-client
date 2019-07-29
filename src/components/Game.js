@@ -12,7 +12,7 @@ export default function Game(props) {
       <button key='4'onClick={() => props.handleClick(4)}>'4'</button> */}
     <ul>
       { props.cards && props.cards.map(card => (
-        <button className='button' key={card} 
+        <button disabled={!props.isEnabled} className='button' key={card} 
         onClick={() => props.handleClick(card)}
         > 
         { props.hideCards 
@@ -21,9 +21,9 @@ export default function Game(props) {
       )) }
     </ul> 
     <div> {
-             props.win
+             props.win && !props.hideCards
             ? <button onClick={() => props.levelUp()}>You won. Level up?</button>
-            : props.lose
+            : props.lose && !props.hideCards
             ? <button onClick={() => props.playAgain()}>You lost. Play again?</button>
             : null}
       </div>
