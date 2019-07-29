@@ -33,18 +33,17 @@ export default function Game(props) {
         {win && !hideCards ? (
           <div className="end">
             You won! <br />
-            <button color="primary" variant="raised" onClick={() => levelUp()}>
+            <button className="button" onClick={() => levelUp()}>
               Level up?
             </button>{' '}
             <br />
-            <button onClick={() => playAgain()}>Or play again?</button>
+            <button className="button" onClick={() => playAgain()}>Or play again?</button>
           </div>
         ) : lose && !hideCards ? (
           <div className="end">
             You lost! <br />
             <button
-              color="primary"
-              variant="raised"
+              className="button"
               onClick={() => playAgain()}
             >
               Play again?

@@ -59,16 +59,14 @@ class GameContainer extends React.Component {
     }
   }
 
-  levelUp = () => {
-    this.props.loadCards(this.props.difficulty + 4)
+  levelUp = async() => {
+    await this.props.loadCards(this.props.difficulty + 4);
+    return this.flipCards();
   }
 
-  playAgain = () => {
-    this.setState({
-      initialState
-    })
-    this.props.loadCards(this.props.difficulty)
-    this.componentDidMount()
+  playAgain = async () => {
+    await this.props.loadCards(4);
+    return this.flipCards();
   }
 
   render() {
