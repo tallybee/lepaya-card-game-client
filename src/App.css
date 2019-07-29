@@ -3,19 +3,20 @@
 
 body {
   font-family: 'Raleway', sans-serif;
-  color: black;
+  font: Rgba(000,000,000,0.8);
   display: flex;
   flex-direction: row;
   /* min-height: 100vh; */
   text-align: center;
-  background-color: #CCDFCB;
+  /* background-color: #CCDFCB; */
+  background-color: tomato;
   justify-content: space-between;
 }
 
 .home, .game {
   padding: 3em;
   margin: 3em;
-  background-color: white;
+  background-color: BlanchedAlmond ;
   border-radius: 25px;
   min-width: 65em;
   min-height: 20em;
@@ -40,10 +41,9 @@ body {
 
 .button {
   font-family: 'Raleway', sans-serif;
-  font-size: 3em;
+  border-radius: 25px;
   box-sizing: border-box;
-  background-color: #ff6a;
-  padding: 4em;
+  background-color:crimson;
   display: flex;
   justify-content: space-between;
   margin: 4em;
@@ -61,7 +61,7 @@ body {
 
 .button:hover,
 .button:focus {
-  color: #01ABAA;
+  color: darkcyan;
   cursor: pointer;
 }
 

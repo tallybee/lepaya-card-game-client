@@ -1,5 +1,4 @@
 import React from 'react'
-import { Button } from '@material-ui/core'
 
 export default function Game(props) {
   const {
@@ -19,14 +18,14 @@ export default function Game(props) {
       <ul className="buttons">
         {cards &&
           cards.map(card => (
-            <Button
+            <button
               disabled={!isEnabled}
               className="button"
               key={card}
               onClick={() => handleClick(card)}
             >
               {hideCards && !clickedCards.includes(card) ? ' ' : card}
-            </Button>
+            </button>
           ))}
       </ul>
       <div>
@@ -34,22 +33,22 @@ export default function Game(props) {
         {win && !hideCards ? (
           <div className="end">
             You won! <br />
-            <Button color="primary" variant="raised" onClick={() => levelUp()}>
+            <button color="primary" variant="raised" onClick={() => levelUp()}>
               Level up?
-            </Button>{' '}
+            </button>{' '}
             <br />
-            <Button onClick={() => playAgain()}>Or play again?</Button>
+            <button onClick={() => playAgain()}>Or play again?</button>
           </div>
         ) : lose && !hideCards ? (
           <div className="end">
             You lost! <br />
-            <Button
+            <button
               color="primary"
               variant="raised"
               onClick={() => playAgain()}
             >
               Play again?
-            </Button>
+            </button>
           </div>
         ) : null}
       </div>
