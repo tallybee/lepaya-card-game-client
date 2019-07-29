@@ -42,7 +42,6 @@ class GameContainer extends React.Component {
       if (firstCard === event && this.state.cardsInOrder.length > 0) {
         return null
       } else if (firstCard === event && this.state.cardsInOrder.length === 0) {
-        console.log('winning trouble', event, this.state)
         this.setState({
           hideCards: false,
           win: true,
@@ -50,7 +49,6 @@ class GameContainer extends React.Component {
           isEnabled: false
         })
       } else {
-        console.log('losing trouble', event, this.state, this.cards)
         this.setState({
           hideCards: false,
           win: false,
