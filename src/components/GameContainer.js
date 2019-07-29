@@ -17,7 +17,7 @@ class GameContainer extends React.Component {
   }
 
   componentDidMount() {
-    this.flipCards();
+    this.flipCards()
   }
 
   flipCards() {
@@ -27,15 +27,15 @@ class GameContainer extends React.Component {
         hideCards: true,
         cardsInOrder: cardsInOrder,
         isEnabled: true,
-        clickedCards:[]
-      }); console.log('im donw')
+        clickedCards: []
+      })
     }, 3000)
   }
 
   handleClick = event => {
     this.setState({
       clickedCards: [...this.state.clickedCards, event]
-     });
+    })
     if (this.state.cardsInOrder.length > 0) {
       const firstCard = this.state.cardsInOrder.shift()
       if (firstCard === event && this.state.cardsInOrder.length > 0) {
@@ -95,6 +95,6 @@ const mapStateToProps = state => ({
 })
 
 export default connect(
-  mapStateToProps
-  ,   {loadCards}
+  mapStateToProps,
+  { loadCards }
 )(GameContainer)
