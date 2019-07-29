@@ -9,13 +9,13 @@ export default function Home(props) {
       <div className="invitation">Here's your task. We'll show you some buttons with random numbers. Your challenge is to click through from the lowest value to the highest value. Ready?! <br/> Select level:</div>
       <div className="buttons">
       <button className='button' to="/game" key="easy" onClick={() => props.onClick(4)}>
-        Easy
+        EASY
       </button>
       <button className='button' to="/game" key="medium" onClick={() => props.onClick(8)}>
-        Medium
+        MEDIUM
       </button>
       <button className='button' to="/game" key="hard" onClick={() => props.onClick(12)}>
-        Hard
+        HARD
       </button>
       </div>
     </div>
