@@ -1,66 +1,67 @@
-.App {
-  text-align: center;
-}
+@import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
-}
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+body {
+  font-family: 'Raleway', sans-serif;
+  color: black;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  flex-direction: row;
+  /* min-height: 100vh; */
+  text-align: center;
+  background-color: #CCDFCB;
+  justify-content: space-between;
 }
 
-.App-link {
-  color: #61dafb;
+.home, .game {
+  padding: 3em;
+  margin: 3em;
+  background-color: white;
+  border-radius: 25px;
+  min-width: 60em;
+  min-height: 20em;
+  align-content: center
 }
 
-.button1 {
-  background-color: blue
+.buttons {
+  padding: 1em;
+  margin: 2em;
+  display: flex;
+  flex-direction: space-between
 }
 
-.button2 {
-  background-color: pink
+.end {
+  height: 1em;
+}
+
+.invitation {
+  padding: 1em;
+  margin: 2em
 }
 
 .button {
-  /* box-sizing: border-box;
+  font-family: 'Raleway', sans-serif;
+  font-size: 3em;
+  box-sizing: border-box;
+  background-color: #ff6a;
+  padding: 4em;
   display: flex;
-  margin: auto;
-  position: relative; */
+  justify-content: space-between;
+  margin: 4em;
   width: calc(25% - 10px);
   height: calc(33.333% - 10px);
-  margin: 5px;
-  size: 5em;
+  height: 3.5em;
+  font-weight: bold;
   position: relative;
   transform: scale(1);
   transform-style: preserve-3d;
   transition: transform .5s;
   box-shadow: 1px 1px 1px rgba(0,0,0,.3);
-}
+  color: whitesmoke
+} 
 
-.flipped {
-  border-width: 5px;
-  border-style: solid;
-  margin-bottom: 10px;      
-  margin-left: 10px;  
-  width: 100px;  
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.button:hover,
+.button:focus {
+  color: #01ABAA;
+  cursor: pointer;
 }
 

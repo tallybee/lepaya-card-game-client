@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import '../App.css';
 import Home from './Home'
 import { loadCards } from '../actions/loadCards'
 import { setDifficulty } from '../actions/setDifficulty'
