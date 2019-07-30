@@ -14,8 +14,9 @@ export default function Game(props) {
     lose
   } = props
   if (!cards) return 'Loading game...'
-  return (
+  return ( 
     <div className="game">
+      {/* maps over numbers in state to display on screen as buttons */}
       <ul className="buttons">
         {cards &&
           cards.map(card => (
@@ -24,32 +25,36 @@ export default function Game(props) {
               className="button"
               key={card}
               onClick={() => handleClick(card)}
-            >
-              {hideCards && !clickedCards.includes(card) ? ' ' : card}
+            > 
+              {hideCards && !clickedCards.includes(card) ? ' ' : card} 
+              {/*  lets player see values of clicked buttons */}
             </button>
           ))}
       </ul>
-      <div>
-        {' '}
-        {win && !hideCards && difficulty < 12 ? (
-          <div className="end">
+      <div> 
+        {' '} 
+        {win && !hideCards && difficulty < 12 ? ( // if game is won and difficulty is not "hard" (the highest), player gets option to play again or go level up
+        // "!hide cards" is a quick solution to hide buttons when the game is being played
+          <div className="end"> 
             You won! <br />
-            
             <button className="button" onClick={() => playAgain()}>
               Play again?
-            </button>{' '}<button className="button" onClick={() => levelUp()}>
+            </button>{' '}
+            <button className="button" onClick={() => levelUp()}>
               Or level up?
             </button>
             <br />
           </div>
-        ) : lose && !hideCards ? (
+          // game lost - option to play again
+        ) : lose && !hideCards ? ( 
           <div className="end">
             You lost! <br />
             <button className="button" onClick={() => playAgain()}>
               Play again?
             </button>
           </div>
-        ) : win && !hideCards && difficulty === 12 ? (
+          // game won and difficulty highest - button to play again or check out memory championship :-) 
+        ) : win && !hideCards && difficulty === 12 ? ( 
           <div className="end">
             Wow, that's impressive! What's next? <br />
             <button
@@ -66,7 +71,8 @@ export default function Game(props) {
             <button className="button" onClick={() => playAgain()}>
               Or play again?
             </button>
-        </div>) : null}
+          </div>
+        ) : null}
       </div>
     </div>
   )
