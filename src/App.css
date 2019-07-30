@@ -43,6 +43,7 @@ body {
   justify-content: space-between;
   text-align: center;
   margin: 3em;
+  min-width: 1em;
   width: calc(25% - 10px);
   height: calc(33.333% - 10px);
   height: 3.5em;

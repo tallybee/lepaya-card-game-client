@@ -9,6 +9,7 @@ export default function Game(props) {
     hideCards,
     playAgain,
     levelUp,
+    difficulty,
     win,
     lose
   } = props
@@ -30,7 +31,7 @@ export default function Game(props) {
       </ul>
       <div>
         {' '}
-        {win && !hideCards ? (
+        {win && !hideCards && difficulty < 12 ? (
           <div className="end">
             You won! <br />
             <button className="button" onClick={() => levelUp()}>
