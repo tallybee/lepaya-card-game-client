@@ -1,4 +1,4 @@
-## Hello Lepaya!
+## Hello Lepaya! :wave:
 
 Welcome to my assignment! It's the memory card game. You can play it [right here](https://card-game-for-lepaya.netlify.com). Now, to the fun stuff:
 
@@ -8,6 +8,9 @@ It's a memory game! You'll be showed a number of cards for a few seconds - you g
 So you gotta click on the buttons where 7 was, then 23, 56 and 99.
 
 There are 3 levels: easy (with 4 numbers), medium (8) and hard (12). The length of time to remember the numbers is longer for harder levels (phew). 
+
+Something like this:
+![](./gifs/lepaya-card-game.gif)
 
 ### Some instructions
 How to run this locally:
