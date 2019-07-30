@@ -36,7 +36,7 @@ export default function Game(props) {
             You won! <br />
             
             <button className="button" onClick={() => playAgain()}>
-              Olay again?
+              Play again?
             </button>{' '}<button className="button" onClick={() => levelUp()}>
               Or level up?
             </button>

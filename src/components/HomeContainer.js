@@ -15,6 +15,7 @@ class HomeContainer extends React.Component {
 
   render() {
     const shouldRedirect = this.props.cards
+    localStorage.setItem('cards', this.props.cards);
     if (shouldRedirect) {
       return <Redirect to="/game" />
     } else {
