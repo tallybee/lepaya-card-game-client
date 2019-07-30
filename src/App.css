@@ -1,8 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans|Rubik&display=swap');
 
 
 body {
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Noto Sans', sans-serif;
   font: Rgba(000,000,000,0.8);
   display: flex;
   flex-direction: row;
@@ -37,13 +38,13 @@ body {
 }
 
 .button {
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Rubik', sans-serif;
   border-radius: 25px;
   background-color:crimson;
-  justify-content: space-between;
+  justify-content: space-around;
+  min-width: 50px;
   text-align: center;
-  margin: 3em;
-  min-width: 1em;
+  margin: 2em;
   width: calc(25% - 10px);
   height: calc(33.333% - 10px);
   height: 3.5em;

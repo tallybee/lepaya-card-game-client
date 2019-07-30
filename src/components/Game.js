@@ -34,23 +34,39 @@ export default function Game(props) {
         {win && !hideCards && difficulty < 12 ? (
           <div className="end">
             You won! <br />
-            <button className="button" onClick={() => levelUp()}>
-              Level up?
-            </button>{' '}
+            
+            <button className="button" onClick={() => playAgain()}>
+              Olay again?
+            </button>{' '}<button className="button" onClick={() => levelUp()}>
+              Or level up?
+            </button>
             <br />
-            <button className="button" onClick={() => playAgain()}>Or play again?</button>
           </div>
         ) : lose && !hideCards ? (
           <div className="end">
             You lost! <br />
-            <button
-              className="button"
-              onClick={() => playAgain()}
-            >
+            <button className="button" onClick={() => playAgain()}>
               Play again?
             </button>
           </div>
-        ) : null}
+        ) : win && !hideCards && difficulty === 12 ? (
+          <div className="end">
+            Wow, that's impressive! What's next? <br />
+            <button
+              className="button"
+              href=""
+              onClick={() =>
+                (window.location.href =
+                  'http://www.worldmemorychampionships.com/')
+              }
+            >
+              Memory championship?
+            </button>{' '}
+            <br />
+            <button className="button" onClick={() => playAgain()}>
+              Or play again?
+            </button>
+        </div>) : null}
       </div>
     </div>
   )

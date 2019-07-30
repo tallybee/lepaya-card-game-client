@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import Game from './Game'
 import { loadCards } from '../actions/loadCards'
+import { setDifficulty } from '../actions/setDifficulty'
 import '../App.css'
 
 const initialState = {
@@ -24,13 +25,14 @@ class GameContainer extends React.Component {
   flipCards() {
     setTimeout(() => {
       const cardsInOrder = [...this.props.cards].sort()
+      console.log('cards in order', cardsInOrder, 'cards props', this.props.cards)
       this.setState({
         hideCards: true,
         cardsInOrder: cardsInOrder,
         isEnabled: true,
         clickedCards: []
       })
-    }, 3000)
+    }, this.props.difficulty / 4 * 3000)
   }
 
   handleClick = event => {
@@ -41,6 +43,7 @@ class GameContainer extends React.Component {
     if (firstCard === event && this.state.cardsInOrder.length > 0) {
       return null
     } else if (firstCard === event && this.state.cardsInOrder.length === 0) {
+      console.log('win', this.state.cardsInOrder, 'clicked', this.state.clickedCards)
       this.setState({
         hideCards: false,
         win: true,
@@ -48,6 +51,7 @@ class GameContainer extends React.Component {
         isEnabled: false
       })
     } else {
+      console.log('lose', this.state.cardsInOrder, 'clicked', this.state.clickedCards)
       this.setState({
         hideCards: false,
         win: false,
@@ -58,7 +62,10 @@ class GameContainer extends React.Component {
   }
 
   levelUp = async () => {
-    await this.props.loadCards( this.props.difficulty > 12 ? this.props.difficulty + 4 : this.props.difficulty)
+    console.log('im here', this.props.difficulty)
+    const newDifficulty =  this.props.difficulty < 12 ? this.props.difficulty + 4 : this.props.difficulty;
+    await this.props.loadCards(newDifficulty)
+    await this.props.setDifficulty(newDifficulty)
     return this.flipCards()
   }
 
@@ -92,5 +99,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { loadCards }
+  { loadCards, setDifficulty }
 )(GameContainer)
