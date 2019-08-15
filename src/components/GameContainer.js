@@ -35,7 +35,6 @@ class GameContainer extends React.Component {
   }
 
   handleClick = event => { 
-    console.log('correct cards', this.props.cards, 'cards in order', this.state.cardsInOrder, 'event', event)
     this.setState({ // this updates an array of clicked cards so those become visible
       clickedCards: [...this.state.clickedCards, event]
     })
